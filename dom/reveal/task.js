@@ -3,7 +3,8 @@ console.log(advert);
 
 // перебор элементов массива, определение положения, задание интервала для функции видимости
 // и включение видимости.
-advert.forEach(element => {
+document.addEventListener('scroll', () => {
+    advert.forEach(element => {
     setInterval(() => {
         let {top, bottom} = element.getBoundingClientRect()
         console.log(top, bottom);
@@ -14,6 +15,8 @@ advert.forEach(element => {
         }
     }, 100)
 })
+})
+
 
 // функция определяет, когда элемент должен быть видимым
 function isVisible(elTop, elBottom) {
