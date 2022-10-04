@@ -1,8 +1,7 @@
 const advArr = document.querySelectorAll(".rotator__case")
 const rotators = Array.from(document.querySelectorAll(".rotator"))
-console.log(rotators.length);
 
-
+//функция для счетчика индексов для массива
 function getIndex(array, start = 0) {
     let counter = start;
     return function() {
@@ -12,50 +11,38 @@ function getIndex(array, start = 0) {
     
 }
 
-// function creatCounts(array) {
-//     let myCount = new Array(array.length)
-//     for (i = 0; i < array.length; i++) {
-//         return eval("let myCount" + i + " = getIndex(array[" + i + "].children)");
-//     }
-// }
-
+// объявляем переменные для счетчиков для массивов
 let myCount = new Array(rotators.length)
 for (i = 0; i < rotators.length; i++) {
     eval("var myCount" + i + " = getIndex(rotators[" + i + "].children)");
 }
 
-// console.log(creatCounts(rotators)[0]);
 
-// console.log(myCount1());
-// console.log(myCount1());
-// console.log(myCount1());
-// console.log(myCount1());
-// console.log(myCount1());
-// console.log(myCount1());
-// console.log(myCount1());
-// console.log(myCount1());
-// console.log(myCount0());
-// console.log(myCount0());
-// console.log(myCount0());
-// console.log(myCount0());
-// console.log(myCount0());
-// console.log(myCount0());
-// console.log(myCount0());
-// console.log(myCount0());
-// console.log(myCount0());
+// включение элемента массива
+function advOn1(array) {
+    for(i = 0; i < array.length; i++) {
+        // console.log(array[i]);
+        for(j = 0; j < array[i].children.length; j++) {
+            console.log(array[i].children[j]);
+            array[i].children[j].classList.remove('rotator__case_active')
+            // console.log(eval('myCount'+ i+'()'));
+            array[i].children[eval('myCount'+ i+'()')].classList.add('rotator__case_active')
+        } 
+    array[i].children[eval('myCount'+ i+'()')].classList.add('rotator__case_active')    
+    }
+}
+setInterval(() => getInterval(rotators), getInterval(rotators))
+
+function getInterval(array) {
+    for(i = 0; i < array.length; i++) {
+        // console.log(array[i]);
+        for(j = 0; j < array[i].children.length; j++) {
+            console.log('массив ',i, array[i].children[eval('myCount'+ i+'()')].dataset.speed);
+            return array[i].children[eval('myCount'+ i+'()')].dataset.speed
+            // console.log('массив, цвет ',i, array[i].children[j].dataset.color);
+        } 
+    // array[i].children[eval('myCount'+ i+'()')].classList.add('rotator__case_active')    
+    }
+}
 
 
-
-
-// console.log(getCountArray(rotators)[0]());
-// console.log(getCountArray(rotators)[0]());
-// console.log(getCountArray(rotators)[0]());
-
-// setInterval(() => console.log(getCountArray(rotators)[0]()), 1000)
-// setInterval(() => myCount1(), 1000)
-
-// let index1 = getIndex(advArr)
-
-// setInterval(() => console.log('второй - ', myCount1()), 800)
-// setInterval(() => console.log('первый ->>>>> ',myCount0()), 500)
-setInterval(() => console.log(myCount0()), 800)
