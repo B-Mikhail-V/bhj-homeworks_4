@@ -21,28 +21,15 @@ for (i = 0; i < rotators.length; i++) {
 // включение элемента массива
 function advOn1(array) {
     for(i = 0; i < array.length; i++) {
-        // console.log(array[i]);
         for(j = 0; j < array[i].children.length; j++) {
-            console.log(array[i].children[j]);
             array[i].children[j].classList.remove('rotator__case_active')
-            // console.log(eval('myCount'+ i+'()'));
-            array[i].children[eval('myCount'+ i+'()')].classList.add('rotator__case_active')
-        } 
-    array[i].children[eval('myCount'+ i+'()')].classList.add('rotator__case_active')    
+        }
+    indexActivate = eval('myCount'+ i+'()')
+    colorNew = array[i].children[indexActivate].dataset.color
+    array[i].children[indexActivate].style.color = colorNew
+    array[i].children[indexActivate].classList.add('rotator__case_active')    
     }
 }
-setInterval(() => getInterval(rotators), getInterval(rotators))
-
-function getInterval(array) {
-    for(i = 0; i < array.length; i++) {
-        // console.log(array[i]);
-        for(j = 0; j < array[i].children.length; j++) {
-            console.log('массив ',i, array[i].children[eval('myCount'+ i+'()')].dataset.speed);
-            return array[i].children[eval('myCount'+ i+'()')].dataset.speed
-            // console.log('массив, цвет ',i, array[i].children[j].dataset.color);
-        } 
-    // array[i].children[eval('myCount'+ i+'()')].classList.add('rotator__case_active')    
-    }
-}
+setInterval(() => advOn1(rotators), 1000)
 
 
