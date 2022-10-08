@@ -14,6 +14,10 @@ body {
   background: white;
 }
 
+.bg_color_green {
+  background: green;
+}
+
 .book_fs-big {
   font-size: 20px;
 }
@@ -44,6 +48,10 @@ body {
 
 .book_bg-white {
   background: white;
+}
+
+.book_bg-green {
+  background: green;
 }
 
 .book__controls {
