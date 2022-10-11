@@ -19,17 +19,34 @@ for (i = 0; i < rotators.length; i++) {
 
 
 // включение элемента массива
-function advOn1(array) {
-    for(i = 0; i < array.length; i++) {
-        for(j = 0; j < array[i].children.length; j++) {
-            array[i].children[j].classList.remove('rotator__case_active')
+function advOn1(i) {
+    // for(i = 0; i < rotators.length; i++) {
+        indexActivate = eval('myCount'+ i+'()')
+        intervalNew = rotators[i].children[indexActivate].dataset.speed
+        console.log(intervalNew);
+        timerAds = setTimeout(advOn1(i), intervalNew)
+        for(j = 0; j < rotators[i].children.length; j++) {
+            rotators[i].children[j].classList.remove('rotator__case_active')
         }
-    indexActivate = eval('myCount'+ i+'()')
-    colorNew = array[i].children[indexActivate].dataset.color
-    array[i].children[indexActivate].style.color = colorNew
-    array[i].children[indexActivate].classList.add('rotator__case_active')    
-    }
+
+    colorNew = rotators[i].children[indexActivate].dataset.color
+
+    rotators[i].children[indexActivate].style.color = colorNew
+    rotators[i].children[indexActivate].classList.add('rotator__case_active')
+    // }
+    return intervalNew
+
 }
-setInterval(() => advOn1(rotators), 1000)
 
 
+
+    for(i = 0; i < rotators.length-1; i++) {
+        console.log(rotators[i]);
+        let interval = setTimeout(function actOn() {
+            indexActivate = eval('myCount'+ i+'()')
+            colorNew = rotators[i].children[indexActivate].dataset.color
+            rotators[i].children[indexActivate].style.color = colorNew
+            rotators[i].children[indexActivate].classList.add('rotator__case_active')
+            interval = setTimeout(actOn, 300)
+        }, 1000)
+}

@@ -5,15 +5,13 @@ console.log(advert);
 // и включение видимости.
 document.addEventListener('scroll', () => {
     advert.forEach(element => {
-    setInterval(() => {
-        let {top, bottom} = element.getBoundingClientRect()
+        const {top, bottom} = element.getBoundingClientRect()
         console.log(top, bottom);
         if(isVisible(top, bottom)) {
             element.classList.add('reveal_active')
         } else {
             element.classList.remove('reveal_active')
         }
-    }, 100)
 })
 })
 
